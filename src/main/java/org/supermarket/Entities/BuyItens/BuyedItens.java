@@ -19,7 +19,6 @@ public class BuyedItens {
     public int getQuantity() {
         return quantity;
     }
-
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
@@ -28,7 +27,7 @@ public class BuyedItens {
         return this.product.getUnityPrice() * this.quantity + this.calcTaxes();
     }
 
-    public Double calcTaxes() {
+    private Double calcTaxes() {
         return this.quantity * this.product.getTax();
     }
 }
