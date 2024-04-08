@@ -2,18 +2,20 @@ package org.supermarket.Entities.Stock;
 
 import org.supermarket.Entities.Products.Product;
 
+import java.util.ArrayList;
+
 public class Stock {
 
-    private Product[] product;
+    private ArrayList<Product> products = new ArrayList<>();
     private int quantity;
 
-    public Stock(Product[] product, int quantity) {
-        this.product = product;
+    public Stock(ArrayList<Product> product, int quantity) {
+        this.products = product;
         this.quantity = quantity;
     }
 
-    public Product[] getProducts() {
-        return product;
+    public ArrayList<Product> getProducts() {
+        return products;
     }
 
     public int getQuantity() {
@@ -21,6 +23,10 @@ public class Stock {
     }
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public void addItens(Product product) {
+        products.add(product);
     }
 }
 
