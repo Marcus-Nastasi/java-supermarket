@@ -7,26 +7,21 @@ import java.util.ArrayList;
 public class Stock {
 
     private ArrayList<Product> products = new ArrayList<>();
-    private int quantity;
 
-    public Stock(ArrayList<Product> product, int quantity) {
+    public Stock(ArrayList<Product> product) {
         this.products = product;
-        this.quantity = quantity;
     }
 
     public ArrayList<Product> getProducts() {
         return products;
     }
 
-    public int getQuantity() {
-        return quantity;
-    }
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
     public void addItens(Product product) {
         products.add(product);
+    }
+
+    public void deleteItens(long id) {
+        this.products.remove(id);
     }
 }
 
