@@ -13,8 +13,8 @@ public class StockController {
         initialSetup();
     }
 
-    public Stock getStock() {
-        return stock;
+    public String getStock() {
+        return stock.getProductsString();
     }
 
     public void addItem(Product product) {
@@ -39,6 +39,8 @@ public class StockController {
         this.addItem(new Product(1004, 4.99, "Potatoe", new Tax(4.99*0.01)));
         this.addItem(new Product(1006, 8.10, "Peanut butter", new Tax(8.10*0.01)));
         this.addItem(new Product(1009, 24.00, "Pizza", new Tax(24.00*0.01)));
+        this.addItem(new Product(1003, 1.10, "Tomatoe", new Tax(24.00*0.01)));
+        this.addItem(new Product(1001, 0.15, "Garlic", new Tax(24.00*0.01)));
     }
 }
 

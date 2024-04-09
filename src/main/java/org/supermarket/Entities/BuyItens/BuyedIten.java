@@ -2,12 +2,12 @@ package org.supermarket.Entities.BuyItens;
 
 import org.supermarket.Entities.Products.Product;
 
-public class BuyedItens {
+public class BuyedIten {
 
     private Product product;
     private int quantity;
 
-    public BuyedItens(Product product, int quantity) {
+    public BuyedIten(Product product, int quantity) {
         this.product = product;
         this.quantity = quantity;
     }

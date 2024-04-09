@@ -1,12 +1,14 @@
 package org.supermarket.Entities.Payment;
 
+import java.util.ArrayList;
+
 public class Credit extends Payment {
 
     private Double value;
     private String name, number;
     private int cvv;
 
-    public Credit(String[] dados, Double value, String name, String number, int cvv) {
+    public Credit(ArrayList<String> dados, Double value, String name, String number, int cvv) {
         super(dados);
         this.value = value;
         this.name = name;

@@ -1,11 +1,13 @@
 package org.supermarket.Entities.Payment;
 
+import java.util.ArrayList;
+
 public class Pix extends Payment {
 
     private Double value;
     private String pixKey;
 
-    public Pix(String[] dados, Double value, String pixKey) {
+    public Pix(ArrayList<String> dados, Double value, String pixKey) {
         super(dados);
         this.value = value;
         this.pixKey = pixKey;

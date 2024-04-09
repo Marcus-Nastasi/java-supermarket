@@ -8,6 +8,7 @@ public class Stock {
 
     private ArrayList<Product> products = new ArrayList<>();
 
+    public Stock() {}
     public Stock(ArrayList<Product> product) {
         this.products = product;
     }
@@ -16,12 +17,14 @@ public class Stock {
         return products;
     }
 
-    public void addItens(Product product) {
-        products.add(product);
+    public String getProductsString() {
+        StringBuilder sb = new StringBuilder();
+        for(Product p: products) sb.append(p).append("\n");
+        return sb.toString();
     }
 
-    public void deleteItens(long id) {
-        this.products.remove(id);
+    public void addItens(Product product) {
+        products.add(product);
     }
 }
 

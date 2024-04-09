@@ -4,7 +4,7 @@ public class Product {
 
     private long id;
     private Double unityPrice;
-    private String description;
+    protected String description;
     protected Tax tax;
 
     public Product(long id, Double unityPrice, String description, Tax tax) {
@@ -31,6 +31,14 @@ public class Product {
 
     public Double getTax() {
         return tax.getTax();
+    }
+
+    @Override
+    public String toString() {
+        return(
+            "Name: " + this.getDescription() +
+            "\nPrice: $" + String.format("%.2f%n", this.getUnityPrice()) + "\n"
+        );
     }
 }
 

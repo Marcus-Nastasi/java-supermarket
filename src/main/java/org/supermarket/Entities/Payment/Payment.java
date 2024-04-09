@@ -1,17 +1,19 @@
 package org.supermarket.Entities.Payment;
 
+import java.util.ArrayList;
+
 public abstract class Payment {
 
-    private String[] dados;
+    private ArrayList<String> dados = new ArrayList<>();
 
-    public Payment(String[] dados) {
+    public Payment(ArrayList<String> dados) {
         this.dados = dados;
     }
 
-    public String[] getDados() {
+    public ArrayList<String> getDados() {
         return dados;
     }
-    public void setDados(String[] dados) {
+    public void setDados(ArrayList<String> dados) {
         this.dados = dados;
     }
 
