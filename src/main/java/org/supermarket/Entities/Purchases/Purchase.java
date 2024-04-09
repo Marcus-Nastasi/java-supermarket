@@ -53,22 +53,21 @@ public class Purchase {
 
         sb.append("----- Supermarket LTDA. -----\n").append("-----------------------------\n")
         .append("        CUPOM FISCAL\n").append("-----------------------------\n")
-        .append(this.date).append("\n-----------------------------\n")
-        .append(this.client.getName()).append(", \n").append(this.client.getEmail()).append(", \n")
-        .append(this.client.getCpf()).append("\n-----------------------------\n")
-        .append("            Items \n");
+        .append(getDate()).append("\n-----------------------------\n").append(client)
+        .append("-----------------------------\n").append("            Items \n");
 
-        for(BuyedIten bi: this.buyedIten) {
+        for(BuyedIten bi: buyedIten) {
             sb.append(bi.getProduct().getDescription())
             .append(", qnt. ").append(bi.getQuantity())
             .append(", sub. $").append(bi.calcSubTotal())
             .append(", tax. ").append(bi.getProduct().getTax() * 100).append("%\n");
         }
 
-        sb.append("-----------------------------\n").append("Total: $")
-        .append(String.format("%.2f%n", this.calcTotal()));
+        sb.append("-----------------------------\n")
+        .append("Total: $").append(String.format("%.2f%n", calcTotal()));
 
         return sb.toString();
     }
 }
+
 

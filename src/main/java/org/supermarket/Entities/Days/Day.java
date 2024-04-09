@@ -25,7 +25,7 @@ public class Day {
 
     @Override
     public String toString() {
-        return "Day"+ (new Date().getDate()) +" total = $" + this.calcDayTotal();
+        return "Day: "+ new Date() +" total = $" + this.calcDayTotal();
     }
 }
 

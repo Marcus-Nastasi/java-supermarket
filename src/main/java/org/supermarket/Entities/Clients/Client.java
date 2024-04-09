@@ -42,7 +42,6 @@ public class Client {
             "Name: " + this.name + "\n"
             + "E-mail: " + this.email + "\n"
             + "CPF: " + this.cpf + "\n"
-            + "Password: " + this.password + "\n"
         );
     }
 }

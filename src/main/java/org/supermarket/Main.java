@@ -37,7 +37,6 @@ public class Main {
 
         try {
             Purchase purchase = new Purchase(client, buyedItenArrayList, payment);
-
             System.out.println(purchase);
         } catch(PurchaseException pe) {
             System.err.println("Error: "+pe.getMessage());

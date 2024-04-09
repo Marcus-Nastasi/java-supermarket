@@ -23,12 +23,12 @@ public class BuyedIten {
         this.quantity = quantity;
     }
 
-    public Double calcSubTotal() {
-        return this.product.getUnityPrice() * this.quantity + this.calcTaxes();
-    }
-
     private Double calcTaxes() {
         return this.quantity * this.product.getTax();
+    }
+
+    public Double calcSubTotal() {
+        return this.product.getUnityPrice() * (this.quantity + this.calcTaxes());
     }
 }
 
