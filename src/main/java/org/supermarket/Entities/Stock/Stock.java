@@ -17,14 +17,15 @@ public class Stock {
         return products;
     }
 
-    public String getProductsString() {
+    public void addItens(Product product) {
+        products.add(product);
+    }
+
+    @Override
+    public String toString() {
         StringBuilder sb = new StringBuilder();
         for(Product p: products) sb.append(p).append("\n");
         return sb.toString();
-    }
-
-    public void addItens(Product product) {
-        products.add(product);
     }
 }
 

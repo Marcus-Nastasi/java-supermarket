@@ -14,7 +14,7 @@ public class StockController {
     }
 
     public String getStock() {
-        return stock.getProductsString();
+        return stock.toString();
     }
 
     public void addItem(Product product) {
