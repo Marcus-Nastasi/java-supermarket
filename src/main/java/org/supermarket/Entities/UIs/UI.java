@@ -9,6 +9,7 @@ import org.supermarket.Entities.Payment.Payment;
 import org.supermarket.Entities.Payment.Pix;
 import org.supermarket.Entities.Purchases.Purchase;
 import org.supermarket.Entities.Stock.Stock;
+import org.supermarket.Exceptions.PurchaseException;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -47,10 +48,10 @@ public class UI {
         return client;
     }
 
-    public void runUI() {
+    public void runUI() throws PurchaseException {
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Bem vindo ao supermarket!");
+        System.out.println("\nBem vindo ao supermarket!");
         System.out.println("\nDados do cliente.");
 
         System.out.println("Digite os dados do cliente (cpf, nome, email e senha):");
@@ -74,7 +75,7 @@ public class UI {
             long id = sc.nextLong();
             int quantity = sc.nextInt();
             this.buyedItens.add(
-                new BuyedIten(this.stock.getSingleProduct(id), quantity)
+                new BuyedIten(this.stockController.search(id), quantity)
             );
         }
 
@@ -105,7 +106,7 @@ public class UI {
         if(this.payment instanceof Pix || this.payment instanceof Money || this.payment instanceof Credit) {
             this.payment.pay();
             System.out.print("\n");
-        }
+        } else throw new PurchaseException("Payment not defined as money, credit or pix");
 
         System.out.println("NF abaixo:");
         System.out.println("\n" + this.purchase);

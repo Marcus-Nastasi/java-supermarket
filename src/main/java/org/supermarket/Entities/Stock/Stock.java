@@ -17,11 +17,6 @@ public class Stock {
         return products;
     }
 
-    public Product getSingleProduct(long id) {
-        for(Product pd: this.products) if(pd.getId() == id) return pd;
-        return null;
-    }
-
     public String getProductsString() {
         StringBuilder sb = new StringBuilder();
         for(Product p: products) sb.append(p).append("\n");
