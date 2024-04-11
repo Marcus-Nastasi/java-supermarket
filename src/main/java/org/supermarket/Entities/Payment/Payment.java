@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public abstract class Payment {
 
     private ArrayList<String> dados = new ArrayList<>();
+    private Double value;
 
     public Payment(ArrayList<String> dados) {
         this.dados = dados;
@@ -15,6 +16,14 @@ public abstract class Payment {
     }
     public void setDados(ArrayList<String> dados) {
         this.dados = dados;
+    }
+
+    public Double getValue() {
+        return value;
+    }
+
+    public void setValue(Double value) {
+        this.value = value;
     }
 
     public abstract void pay();

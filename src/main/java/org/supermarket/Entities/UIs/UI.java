@@ -51,17 +51,16 @@ public class UI {
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Bem vindo ao supermarket!");
-        System.out.println("\nDados do cliente.\n");
+        System.out.println("\nDados do cliente.");
 
         System.out.println("Digite os dados do cliente (cpf, nome, email e senha):");
         System.out.print("CPF: ");
         String cpf = sc.next();
         System.out.print("Nome: ");
+        sc.nextLine();
         String name = sc.nextLine();
-        sc.next();
         System.out.print("E-mail: ");
-        String email = sc.nextLine();
-        sc.next();
+        String email = sc.next();
         System.out.print("Senha: ");
         String pass = sc.next();
         this.client = new Client(cpf, name, email, pass);
@@ -80,7 +79,7 @@ public class UI {
         }
 
         System.out.println("\nDados do pagamento.");
-        System.out.print("\nDigite o método de pagamento pix (p), crédito (c) ou dinheiro (d): ");
+        System.out.print("Digite o método de pagamento pix (p), crédito (c) ou dinheiro (d): ");
         String paymentMethod = sc.next();
 
         switch(paymentMethod) {
@@ -94,15 +93,24 @@ public class UI {
                 this.payment = new Credit(new ArrayList<>(), 0.0, sc.next(), sc.next(), sc.nextInt());
             }
             case "d" -> {
-                System.out.println();
                 this.payment = new Money(new ArrayList<>(), 0.0);
             }
         }
 
         this.purchase = new Purchase(this.client, this.buyedItens, this.payment);
+        this.payment.setValue(this.purchase.calcTotal());
+
+        System.out.println("\nValor a pagar: $" + String.format("%.2f", this.payment.getValue()));
+
+        if(this.payment instanceof Pix | this.payment instanceof Money | this.payment instanceof Credit) {
+            this.payment.pay();
+            System.out.print("\n");
+        }
 
         System.out.println("NF abaixo:");
         System.out.println("\n" + this.purchase);
+
+        sc.close();
     }
 }
 
