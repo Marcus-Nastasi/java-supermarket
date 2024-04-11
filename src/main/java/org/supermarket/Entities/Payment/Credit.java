@@ -20,6 +20,10 @@ public class Credit extends Payment {
         return value;
     }
 
+    public void setValue(Double value) {
+        this.value = value;
+    }
+
     public String getName() {
         return name;
     }

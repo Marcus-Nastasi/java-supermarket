@@ -21,6 +21,10 @@ public class Pix extends Payment {
         return pixKey;
     }
 
+    public void setValue(Double value) {
+        this.value = value;
+    }
+
     public void pay() {
         System.out.println("Paymeny sucesfully done.");
     }

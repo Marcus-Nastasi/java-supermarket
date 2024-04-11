@@ -62,8 +62,9 @@ public class Purchase {
         for(BuyedIten bi: buyedIten) {
             sb.append(bi.getProduct().getDescription())
             .append(", qnt. ").append(bi.getQuantity())
-            .append(", sub. $").append(bi.calcSubTotal())
-            .append(", tax. ").append(bi.getProduct().getTax() * 100).append("%\n");
+            .append(", sub. $").append(String.format("%.2f", bi.calcSubTotal()))
+            .append(", tax. ").append(String.format("%.2f", bi.getProduct().getTax() * 100))
+            .append("%\n");
         }
 
         sb.append("-------------------------------------\n")

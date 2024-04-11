@@ -15,6 +15,10 @@ public class Money extends Payment {
         return value;
     }
 
+    public void setValue(Double value) {
+        this.value = value;
+    }
+
     public void pay() {
         System.out.println("Payment sucesfully done.");
     }
