@@ -102,7 +102,7 @@ public class UI {
 
         System.out.println("\nValor a pagar: $" + String.format("%.2f", this.payment.getValue()));
 
-        if(this.payment instanceof Pix | this.payment instanceof Money | this.payment instanceof Credit) {
+        if(this.payment instanceof Pix || this.payment instanceof Money || this.payment instanceof Credit) {
             this.payment.pay();
             System.out.print("\n");
         }
