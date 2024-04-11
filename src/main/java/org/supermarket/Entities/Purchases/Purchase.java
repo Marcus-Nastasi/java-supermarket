@@ -17,6 +17,8 @@ public class Purchase {
 
     public Purchase(Client client, ArrayList<BuyedIten> buyedIten, Payment payment) throws PurchaseException {
         if(buyedIten.isEmpty()) throw new PurchaseException("No itens on your purchase.");
+        if(client == null) throw new PurchaseException("No client associated.");
+        if(payment == null) throw new PurchaseException("No payment chose");
         this.client = client;
         this.buyedIten = buyedIten;
         this.payment = payment;

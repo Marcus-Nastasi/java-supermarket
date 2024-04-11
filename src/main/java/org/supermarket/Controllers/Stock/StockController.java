@@ -3,12 +3,14 @@ package org.supermarket.Controllers.Stock;
 import org.supermarket.Entities.Products.Product;
 import org.supermarket.Entities.Products.Tax;
 import org.supermarket.Entities.Stock.Stock;
+import org.supermarket.Exceptions.StockException;
 
 public class StockController {
 
     private Stock stock;
 
     public StockController(Stock stock) {
+        if(stock == null) throw new StockException("No stock on controller.");
         this.stock = stock;
         initialSetup();
     }
