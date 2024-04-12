@@ -1,5 +1,7 @@
 package org.supermarket.Entities.Products;
 
+import org.supermarket.Exceptions.ProductException;
+
 public class Product {
 
     private long id;
@@ -7,7 +9,10 @@ public class Product {
     protected String description;
     protected Tax tax;
 
-    public Product(long id, Double unityPrice, String description, Tax tax) {
+    public Product(long id, Double unityPrice, String description, Tax tax) throws ProductException {
+        if(unityPrice == null) throw new ProductException("Product: unity price undefined.");
+        if(description == null) throw new ProductException("Product: missing description");
+        if(tax == null) throw new ProductException("Product: missing tax.");
         this.id = id;
         this.unityPrice = unityPrice;
         this.description = description;

@@ -1,14 +1,13 @@
 package org.supermarket;
 
 import org.supermarket.Entities.UIs.UI;
-import org.supermarket.Exceptions.PurchaseException;
 
 public class Main {
     public static void main(String[] args) {
         try {
             UI ui = new UI();
-            ui.runUI();
-        } catch(PurchaseException e)  {
+            ui.run();
+        } catch(Exception e)  {
             System.err.println("\n" + e.getMessage());
         }
     }

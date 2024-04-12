@@ -9,8 +9,8 @@ public class StockController {
 
     private Stock stock;
 
-    public StockController(Stock stock) {
-        if(stock == null) throw new StockException("No stock on controller.");
+    public StockController(Stock stock) throws StockException {
+        if(stock == null) throw new StockException("Stock: no stock on controller.");
         this.stock = stock;
         initialSetup();
     }

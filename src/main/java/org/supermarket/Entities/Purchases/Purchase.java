@@ -12,7 +12,7 @@ public class Purchase {
 
     private final Client client;
     private final String date = new Date().toString();
-    private final ArrayList<BuyedIten> buyedIten;
+    private final ArrayList<BuyedIten> buyedItens;
     private Payment payment;
 
     public Purchase(Client client, ArrayList<BuyedIten> buyedIten, Payment payment) throws PurchaseException {
@@ -20,7 +20,7 @@ public class Purchase {
         if(client == null) throw new PurchaseException("No client associated.");
         if(payment == null) throw new PurchaseException("No payment chose");
         this.client = client;
-        this.buyedIten = buyedIten;
+        this.buyedItens = buyedIten;
         this.payment = payment;
     }
 
@@ -33,7 +33,7 @@ public class Purchase {
     }
 
     public ArrayList<BuyedIten> getBuyedItens() {
-        return buyedIten;
+        return buyedItens;
     }
 
     public Payment getPayment() {
@@ -45,7 +45,7 @@ public class Purchase {
 
     public Double calcTotal() {
         Double total = 0.0;
-        for(BuyedIten bi: this.buyedIten) total += bi.calcSubTotal();
+        for(BuyedIten bi: this.buyedItens) total += bi.calcSubTotal();
         return total;
     }
 
@@ -61,7 +61,7 @@ public class Purchase {
         .append("-------------------------------------\n")
         .append("               Items \n");
 
-        for(BuyedIten bi: buyedIten) {
+        for(BuyedIten bi: buyedItens) {
             sb.append(bi.getProduct().getDescription())
             .append(", qnt. ").append(bi.getQuantity())
             .append(", sub. $").append(String.format("%.2f", bi.calcSubTotal()))

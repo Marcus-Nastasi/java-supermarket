@@ -1,5 +1,7 @@
 package org.supermarket.Entities.Clients;
 
+import org.supermarket.Exceptions.ClientException;
+
 public class Client {
 
     private final String cpf;
@@ -7,7 +9,8 @@ public class Client {
     private String email;
     private String password;
 
-    public Client(String cpf, String name, String email, String password) {
+    public Client(String cpf, String name, String email, String password) throws ClientException {
+        if(cpf==null|name==null|email==null|password==null) throw new ClientException("Client: missing information.");
         this.cpf = cpf;
         this.name = name;
         this.email = email;

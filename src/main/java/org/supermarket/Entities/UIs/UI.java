@@ -24,9 +24,6 @@ public class UI {
     private Client client;
 
     public UI() {}
-    public UI(Payment payment) {
-        this.payment = payment;
-    }
 
     public Stock getStock() {
         return stock;
@@ -48,7 +45,7 @@ public class UI {
         return client;
     }
 
-    public void runUI() throws PurchaseException {
+    public void run() throws PurchaseException {
         Scanner sc = new Scanner(System.in);
 
         System.out.println("\nBem vindo ao supermarket!");
@@ -106,7 +103,7 @@ public class UI {
         if(this.payment instanceof Pix || this.payment instanceof Money || this.payment instanceof Credit) {
             this.payment.pay();
             System.out.print("\n");
-        } else throw new PurchaseException("Payment not defined as money, credit or pix");
+        } else throw new PurchaseException("Purchase: payment not defined as money, credit or pix");
 
         System.out.println("NF abaixo:");
         System.out.println("\n" + this.purchase);
