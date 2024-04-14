@@ -31,7 +31,7 @@ public class ClientController {
         return null;
     }
 
-    public void run() {
+    public Client run() {
         Scanner sc = new Scanner(System.in);
 
         System.out.print("Já é cliente? (s/n) ");
@@ -41,6 +41,10 @@ public class ClientController {
         if(yOrN.equals("n")) this.isntClient();
 
         sc.close();
+
+        if(this.client != null) return this.client;
+
+        return null;
     }
 
     private void isClient() throws ClientException {
@@ -58,13 +62,28 @@ public class ClientController {
             this.setClient(this.getSingleClient(cpf));
         } else throw new ClientException("\nClient: wrong password.");
 
-        System.out.println("\n"+this.client);
-
         sc.close();
     }
 
     private void isntClient() {
         Scanner sc = new Scanner(System.in);
+
+        System.out.println("\nDigite os dados:");
+        System.out.print("CPF: ");
+        String cpf = sc.next();
+        System.out.print("Nome: ");
+        sc.nextLine();
+        String name = sc.nextLine();
+        System.out.print("E-mail: ");
+        String email = sc.next();
+        System.out.print("Senha: ");
+        String pass = sc.next();
+
+        this.clients.add(new Client(cpf, name, email, pass));
+
+        System.out.println("\n--------- faça o login abaixo ---------");
+
+        this.isClient();
 
         sc.close();
     }

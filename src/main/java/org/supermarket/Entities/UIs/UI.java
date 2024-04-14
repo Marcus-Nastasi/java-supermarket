@@ -1,5 +1,6 @@
 package org.supermarket.Entities.UIs;
 
+import org.supermarket.Controllers.Clients.ClientController;
 import org.supermarket.Controllers.Stock.StockController;
 import org.supermarket.Entities.BuyItens.BuyedIten;
 import org.supermarket.Entities.Clients.Client;
@@ -18,6 +19,7 @@ public class UI {
 
     private final Stock stock = new Stock();
     private final StockController stockController = new StockController(stock);
+    private final ClientController clientController = new ClientController();
     private ArrayList<BuyedIten> buyedItens = new ArrayList<>();
     private Purchase purchase;
     private Payment payment;
@@ -50,6 +52,8 @@ public class UI {
 
         System.out.println("\nBem vindo ao supermarket!");
         System.out.println("\nDados do cliente.");
+
+        clientController.run();
 
         System.out.println("Digite os dados do cliente (cpf, nome, email e senha):");
         System.out.print("CPF: ");
