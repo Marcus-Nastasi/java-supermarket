@@ -11,7 +11,9 @@ public class ClientController {
     private ArrayList<Client> clients = new ArrayList<>();
     private Client client;
 
-    public ClientController() {}
+    public ClientController() {
+        this.init();
+    }
 
     public ClientController(ArrayList<Client> clients) {
         this.clients = clients;
@@ -25,13 +27,20 @@ public class ClientController {
         this.client = client;
     }
 
+    private void init() {
+        Client client1 = new Client(
+            "43743508885", "Marcus Rolemberg", "vinnie.nsts@gmail.com", "12345"
+        );
+        this.clients.add(client1);
+    }
+
     private Client getSingleClient(String cpf) throws ClientException {
         if(this.clients.isEmpty()) throw new ClientException("Clients: client list empty on controller.");
         for(Client c: this.clients) if(c.getCpf().equals(cpf)) return c;
         return null;
     }
 
-    public Client run() {
+    public Client run() throws ClientException {
         Scanner sc = new Scanner(System.in);
 
         System.out.print("Já é cliente? (s/n) ");
@@ -40,11 +49,9 @@ public class ClientController {
         if(yOrN.equals("s")) this.isClient();
         if(yOrN.equals("n")) this.isntClient();
 
-        sc.close();
+        if(this.client == null) throw new ClientException("Client: client equals null on controller.");
 
-        if(this.client != null) return this.client;
-
-        return null;
+        return this.client;
     }
 
     private void isClient() throws ClientException {
@@ -60,9 +67,8 @@ public class ClientController {
 
         if(this.getSingleClient(cpf).getPassword().equals(password)) {
             this.setClient(this.getSingleClient(cpf));
+            System.out.println("\nBem vindo ao supermarket, " + this.client.getName() + "!");
         } else throw new ClientException("\nClient: wrong password.");
-
-        sc.close();
     }
 
     private void isntClient() {
@@ -81,11 +87,9 @@ public class ClientController {
 
         this.clients.add(new Client(cpf, name, email, pass));
 
-        System.out.println("\n--------- faça o login abaixo ---------");
+        System.out.println("\n--------- Faça o login abaixo ---------");
 
         this.isClient();
-
-        sc.close();
     }
 }
 

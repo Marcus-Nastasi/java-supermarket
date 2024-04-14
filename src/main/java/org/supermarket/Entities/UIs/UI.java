@@ -53,19 +53,7 @@ public class UI {
         System.out.println("\nBem vindo ao supermarket!");
         System.out.println("\nDados do cliente.");
 
-        clientController.run();
-
-        System.out.println("Digite os dados do cliente (cpf, nome, email e senha):");
-        System.out.print("CPF: ");
-        String cpf = sc.next();
-        System.out.print("Nome: ");
-        sc.nextLine();
-        String name = sc.nextLine();
-        System.out.print("E-mail: ");
-        String email = sc.next();
-        System.out.print("Senha: ");
-        String pass = sc.next();
-        this.client = new Client(cpf, name, email, pass);
+        this.client = clientController.run();
 
         System.out.println("\nDados do(s) produto(s).");
         System.out.print("Quantos produtos foram comprados? ");

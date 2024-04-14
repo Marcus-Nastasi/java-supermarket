@@ -8,7 +8,7 @@ public class Main {
             UI ui = new UI();
             ui.run();
         } catch(Exception e)  {
-            System.err.println("\n" + e.getMessage());
+            System.err.println(e.getMessage());
         }
     }
 }
