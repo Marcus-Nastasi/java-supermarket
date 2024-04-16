@@ -30,9 +30,10 @@ public class ClientController {
 
     private void init() {
         Client client1 = new Client(
-            "43743508885", "Marcus Rolemberg", "vinnie.nsts@gmail.com", "12345"
+            "43743508885", "Marcus Rolemberg", "vinnie.nsts@gmail.com",
+             BCrypt.withDefaults().hashToString(4, "12345".toCharArray())
         );
-        this.clients.add(client1);
+        this.addClient(client1);
     }
 
     private Client getSingleClient(String cpf) throws ClientException {
@@ -98,12 +99,4 @@ public class ClientController {
     }
 }
 
-
-//String password = "1234";
-//String bcryptHashString = BCrypt.withDefaults().hashToString(10, password.toCharArray());
-
-//System.out.println(bcryptHashString);
-
-//BCrypt.Result result = BCrypt.verifyer().verify(password.toCharArray(), bcryptHashString);
-//System.out.println(result.verified);
 
