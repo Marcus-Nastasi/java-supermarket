@@ -1,5 +1,6 @@
 package org.supermarket.Controllers.Clients;
 
+import at.favre.lib.crypto.bcrypt.BCrypt;
 import org.supermarket.Entities.Clients.Client;
 import org.supermarket.Exceptions.ClientException;
 
@@ -65,7 +66,9 @@ public class ClientController {
         System.out.print("Senha: ");
         String password = sc.next();
 
-        if(this.getSingleClient(cpf).getPassword().equals(password)) {
+        BCrypt.Result res = BCrypt.verifyer().verify(password.toCharArray(), getSingleClient(cpf).getPassword());
+
+        if(res.verified) {
             this.setClient(this.getSingleClient(cpf));
             System.out.println("\nBem vindo ao supermarket, " + this.client.getName() + "!");
         } else throw new ClientException("\nClient: wrong password.");
@@ -85,7 +88,9 @@ public class ClientController {
         System.out.print("Senha: ");
         String pass = sc.next();
 
-        this.clients.add(new Client(cpf, name, email, pass));
+        String bcryptHashString = BCrypt.withDefaults().hashToString(5, pass.toCharArray());
+
+        this.clients.add(new Client(cpf, name, email, bcryptHashString));
 
         System.out.println("\n--------- Faça o login abaixo ---------");
 
